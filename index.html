@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pokédex Interativa</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="tablet-container">
+      <div class="pokedex-title">Pokédex 1º Geração</div>
+      <div class="pokedex-screen">
+        <div class="search-area">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar Pokémon por nome, ID ou tipo..."
+          />
+          <div class="filter-sort">
+            <select id="filterSelect">
+              <option value="">Todos os tipos</option>
+            </select>
+            <button id="sortBtn">Ordenar por ID</button>
+          </div>
+          <div id="results"></div>
+        </div>
+      </div>
+
+      <div class="tablet-base">
+        <div class="music-controls">
+          <button id="prevMusic">⏮</button>
+          <button id="musicBtn">▶</button>
+          <button id="nextMusic">⏭</button>
+        </div>
+        <div class="volume-controls">
+          <img src="img/volume.png" alt="Volume" class="volume-icon" />
+          <input
+            type="range"
+            id="volumeSlider"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+          />
+        </div>
+      </div>
+    </div>
+    <audio id="bgMusic" loop autoplay></audio>
+
+    <div class="pokemon-details" id="pokemonDetails" style="display: none">
+      <img id="pokemonGif" src="" alt="GIF do Pokémon" />
+      <div class="pokemon-info-details">
+        <h2 id="pokemonName"></h2>
+        <p><strong>ID:</strong> <span id="pokemonId"></span></p>
+        <p><strong>Tipo:</strong> <span id="pokemonType"></span></p>
+        <p><strong>Altura:</strong> <span id="pokemonHeight"></span> dm</p>
+        <p><strong>Peso:</strong> <span id="pokemonWeight"></span> hg</p>
+        <p><strong>Evolui para:</strong> <span id="pokemonEvolves"></span></p>
+        <p id="pokemonDescription"></p>
+        <button id="closeDetails">Fechar</button>
+      </div>
+    </div>
+
+    <script src="pokemons.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
