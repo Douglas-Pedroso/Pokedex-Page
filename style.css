@@ -5,6 +5,7 @@ body {
   justify-content: center;
   padding: 20px;
 }
+
 .pokedex-title {
   font-family: 'Arial Black', Arial, sans-serif;
   font-size: 24px;
@@ -48,10 +49,9 @@ body {
   100% { left: 100%; }
 }
 
-
-
 .tablet-container {
-  width: 520px;
+  width: 95%;
+  max-width: 520px;
   background: #5f0505;
   border-radius: 20px;
   padding: 10px;
@@ -73,7 +73,8 @@ body {
 .filter-sort {
   display: flex;
   align-items: center;
-  gap: 220px;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 15px;
 }
 
@@ -97,9 +98,9 @@ body {
 
 #searchInput {
   flex: 1;
-  margin: 10px;
-  padding: 10px 125px;
-  font-size: 16px;
+  margin: 10px 0;;
+  padding: 10px 140px;
+  font-size: 15px;
   border-radius: 25px;
   border: none;
   outline: none;
@@ -246,11 +247,65 @@ body {
 }
 
 #volumeIcon {
-  font-size: 22px; /* tamanho do emoji */
+  font-size: 22px;
 }
-
 
 #volumeSlider {
   width: 120px;
   cursor: pointer;
+}
+
+/* ----------- MEDIA QUERIES PARA CELULAR ----------- */
+@media (max-width: 480px) {
+  .tablet-container {
+    width: 95%;
+    padding: 8px;
+  }
+
+  .pokedex-screen {
+    padding: 15px;
+  }
+
+  #searchInput {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .filter-sort {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  #filterSelect,
+  #sortBtn {
+    width: 100%;
+  }
+
+  .pokemon-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .pokemon-info strong {
+    font-size: 14px;
+  }
+
+  .pokemon-info span {
+    font-size: 12px;
+  }
+
+  .music-controls {
+    gap: 10px;
+  }
+
+  .music-controls button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  #volumeSlider {
+    width: 80px;
+  }
 }
