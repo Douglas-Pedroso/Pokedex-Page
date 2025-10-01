@@ -36,15 +36,11 @@ function displayPokemons(filteredPokemons) {
     const details = document.createElement("div");
     details.classList.add("pokemon-details");
     details.innerHTML = `
-      <img src="${pokemon.gif ? pokemon.gif : pokemon.image}" alt="${
-      pokemon.name
-    }" class="pokemon-gif" />
+      <img src="${pokemon.gif ? pokemon.gif : pokemon.image}" alt="${pokemon.name}" class="pokemon-gif" />
       <p><strong>Descrição:</strong> ${pokemon.description}</p>
       <p><strong>Altura:</strong> ${pokemon.height / 10} m</p>
       <p><strong>Peso:</strong> ${pokemon.weight / 10} kg</p>
-      <p><strong>Evolui para:</strong> ${
-        pokemon.evolvesTo ? pokemon.evolvesTo : "Nenhuma"
-      }</p>
+      <p><strong>Evolui para:</strong> ${pokemon.evolvesTo ? pokemon.evolvesTo : "Nenhuma"}</p>
       <button class="close-details">Fechar</button>
     `;
     details.style.display = "none";
@@ -96,11 +92,21 @@ function filterPokemons() {
   displayPokemons(filtered);
 }
 
+// ================== Música e volume ==================
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 const volumeSlider = document.getElementById("volumeSlider");
 const prevMusic = document.getElementById("prevMusic");
 const nextMusic = document.getElementById("nextMusic");
+
+// Novo elemento para emoji de volume
+let volumeIcon = document.getElementById("volumeIcon");
+if (!volumeIcon) {
+  volumeIcon = document.createElement("span");
+  volumeIcon.id = "volumeIcon";
+  volumeIcon.style.fontSize = "22px";
+  volumeSlider.parentNode.insertBefore(volumeIcon, volumeSlider);
+}
 
 const musicList = [
   "musics/pokemusic.mp3",
@@ -122,6 +128,16 @@ let currentMusic = 0;
 music.src = musicList[currentMusic];
 music.volume = volumeSlider.value;
 
+// Atualiza emoji de volume
+function updateVolumeIcon() {
+  const vol = volumeSlider.value;
+  if (vol == 0) volumeIcon.textContent = "🔇";
+  else if (vol < 0.4) volumeIcon.textContent = "🔈";
+  else if (vol < 0.7) volumeIcon.textContent = "🔉";
+  else volumeIcon.textContent = "🔊";
+}
+updateVolumeIcon();
+
 musicBtn.addEventListener("click", () => {
   if (music.paused) music.play();
   else music.pause();
@@ -129,6 +145,7 @@ musicBtn.addEventListener("click", () => {
 
 volumeSlider.addEventListener("input", () => {
   music.volume = volumeSlider.value;
+  updateVolumeIcon();
 });
 
 nextMusic.addEventListener("click", () => {

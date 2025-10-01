@@ -245,10 +245,10 @@ body {
   gap: 5px;
 }
 
-.volume-controls .volume-icon {
-  width: 20px;
-  height: 20px;
+#volumeIcon {
+  font-size: 22px; /* tamanho do emoji */
 }
+
 
 #volumeSlider {
   width: 120px;
